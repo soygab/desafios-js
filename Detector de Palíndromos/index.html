@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detector de Palíndromos</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#2563eb;
+    }
+
+    .container{
+      background:#fff;
+      width:400px;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      color:#2563eb;
+      margin-bottom:20px;
+    }
+
+    textarea{
+      width:100%;
+      height:120px;
+      padding:12px;
+      border:2px solid #cbd5e1;
+      border-radius:10px;
+      margin-bottom:15px;
+      resize:none;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:10px;
+      background:#2563eb;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .resultado{
+      margin-top:20px;
+      background:#eff6ff;
+      padding:15px;
+      border-radius:10px;
+      text-align:left;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Detector de Palíndromos</h1>
+
+    <textarea id="texto" placeholder="Digite uma palavra ou frase"></textarea>
+
+    <button onclick="analisar()">Analisar</button>
+
+    <div class="resultado" id="resultado"></div>
+
+  </div>
+
+  <script>
+
+    function analisar(){
+
+      let texto = document.getElementById("texto").value;
+
+      let textoLimpo = texto
+      .toLowerCase()
+      .replace(/\s/g, "");
+
+      let invertido = textoLimpo
+      .split("")
+      .reverse()
+      .join("");
+
+      let palindromo = textoLimpo === invertido;
+
+      document.getElementById("resultado").innerHTML =
+      `
+        <p><strong>Caracteres:</strong> ${texto.length}</p>
+        <p><strong>Palavras:</strong> ${texto.split(" ").length}</p>
+        <p><strong>Invertido:</strong> ${invertido}</p>
+        <p><strong>Palíndromo:</strong> ${palindromo ? "Sim" : "Não"}</p>
+      `;
+
+    }
+
+  </script>
+
+</body>
+</html>

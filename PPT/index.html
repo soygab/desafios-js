@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedra Papel Tesoura</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#2563eb;
+    }
+
+    .container{
+      background:#fff;
+      width:380px;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      color:#2563eb;
+      margin-bottom:20px;
+    }
+
+    button{
+      padding:12px 18px;
+      margin:5px;
+      border:none;
+      border-radius:10px;
+      background:#2563eb;
+      color:#fff;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .resultado{
+      margin-top:20px;
+      background:#eff6ff;
+      padding:15px;
+      border-radius:10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Pedra Papel Tesoura</h1>
+
+    <button onclick="jogar('Pedra')">Pedra</button>
+    <button onclick="jogar('Papel')">Papel</button>
+    <button onclick="jogar('Tesoura')">Tesoura</button>
+
+    <div class="resultado" id="resultado">
+      Faça sua jogada!
+    </div>
+
+  </div>
+
+  <script>
+
+    function jogar(jogador){
+
+      let opcoes = ["Pedra", "Papel", "Tesoura"];
+
+      let maquina = opcoes[Math.floor(Math.random() * 3)];
+
+      let resultado = "";
+
+      if(jogador === maquina){
+        resultado = "Empate!";
+      }
+
+      else if(
+        (jogador === "Pedra" && maquina === "Tesoura") ||
+        (jogador === "Papel" && maquina === "Pedra") ||
+        (jogador === "Tesoura" && maquina === "Papel")
+      ){
+        resultado = "Você venceu!";
+      }
+
+      else{
+        resultado = "Você perdeu!";
+      }
+
+      document.getElementById("resultado").innerHTML =
+      `
+        <p>Você: ${jogador}</p>
+        <p>Máquina: ${maquina}</p>
+        <h3>${resultado}</h3>
+      `;
+
+    }
+
+  </script>
+
+</body>
+</html>
